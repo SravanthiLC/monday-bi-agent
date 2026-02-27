@@ -1,19 +1,20 @@
 import os
-from groq import Groq
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 load_dotenv()
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-
-def ask_llm(system_prompt, user_prompt):
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
-        ],
-        temperature=0.2
-    )
+def ask_llm(system_prompt, user_query):
+    # We use 'gemma-3-12b-it' as it is the most stable free model right now
+    model = genai.GenerativeModel('gemma-3-12b-it')
     
-    return response.choices[0].message.content
+    # Combine system_prompt and user_query into one single prompt
+    # This avoids the '400 Developer instruction' error
+    full_prompt = f"{system_prompt}\n\nUSER QUESTION: {user_query}"
+    
+    try:
+        response = model.generate_content(full_prompt)
+        return response.text
+    except Exception as e:
+        return f"LLM Error: {str(e)}"
