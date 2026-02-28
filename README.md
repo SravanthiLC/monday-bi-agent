@@ -19,7 +19,7 @@ git clone git@github.com:SravanthiLC/monday-bi-agent.git
 ```
 2. Install dependencies
 ```bash
-pip install --break-system-packages requirements
+pip install --break-system-packages requirements.txt
 ```
 3. Environment Configuration
 Create a .env file in the root directory and add your credentials:
