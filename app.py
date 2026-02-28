@@ -15,16 +15,9 @@ st.caption("Founder-level insights powered by Live Data & Gemini 1.5 Flash")
 # --- UI Sidebar & Status ---
 with st.sidebar:
     st.header("Agent Configuration")
-    st.success("⚡ Live Connection: **Active**")
-    st.info("🧠 Model: **Gemini 1.5 Flash (Free Tier)**")
+    st.success("Live Connection: **Active**")
+    st.info("Model: Gemma AI")
     st.divider()
-    st.markdown("### Decision Log Note")
-    st.write("""
-        **Data Strategy:** Using Gemini 2.0 Flash allows for a 1M token window. 
-        We pass full datasets in a CSV format to ensure 
-        the AI can discover correlations across all columns 
-        without hardcoded filtering.
-    """)
 
 # --- Main Query Interface ---
 user_question = st.text_input(
