@@ -1,6 +1,6 @@
+streamlit>=1.40.0
 pandas
-python-dotenv
-streamlit
 requests
-groq
-google-generativeai 
+python-dotenv
+google-generativeai
+altair>=5.0.0
