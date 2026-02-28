@@ -3,4 +3,4 @@ python-dotenv
 streamlit
 requests
 groq
-google-generativeai
+google-generativeai 
